@@ -70,6 +70,9 @@ const app = new Vue(
                     this.activeImage--;
                 }
 
+            },
+            select(position) {
+                this.activeImage = position;
             }
         }
     }
