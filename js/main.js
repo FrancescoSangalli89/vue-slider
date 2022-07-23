@@ -73,7 +73,20 @@ const app = new Vue(
             },
             select(position) {
                 this.activeImage = position;
-            }
+            },
+            
+        },
+        mounted() {
+            const autoScroll = this; 
+            setInterval(function () {
+
+                if (autoScroll.activeImage == (autoScroll.images.length - 1)) {
+                    autoScroll.activeImage = 0;
+                } else {
+                    autoScroll.activeImage++;
+                }
+
+            }, 3000);
         }
     }
 );
