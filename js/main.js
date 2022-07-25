@@ -22,6 +22,7 @@ const app = new Vue(
         el: '#app',
         data: {
 
+            clock: null,
             activeImage: 0,
 
             images: [
@@ -74,19 +75,22 @@ const app = new Vue(
             select(position) {
                 this.activeImage = position;
             },
+            stopAutoScroll() {
+
+                clearInterval(this.clock);
+                
+            },
+            autoScroll() {
+                this.clock = setInterval(() => {
+
+                    this.next();
+    
+                }, 3000);
+            }
             
         },
         mounted() {
-            const autoScroll = this; 
-            setInterval(function () {
-
-                if (autoScroll.activeImage == (autoScroll.images.length - 1)) {
-                    autoScroll.activeImage = 0;
-                } else {
-                    autoScroll.activeImage++;
-                }
-
-            }, 3000);
+            this.autoScroll();
         }
     }
 );
