@@ -33,7 +33,7 @@
                     </div>
     
                     <div class="col-12 p-5">
-                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
+                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel" @mouseover="stopAutoScroll" @mouseleave="autoScroll">
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
@@ -48,7 +48,7 @@
                             </div>
                             <div class="my-thumbnails position-relative">
     
-                                <div v-for="(image, index) in images" :class=" (activeImage==index)?'active':'' " class="my-thumbnail" @click="select(index)" @mouseover="stopAutoScroll" @mouseleave="autoScroll">
+                                <div v-for="(image, index) in images" :class=" (activeImage==index)?'active':'' " class="my-thumbnail" @click="select(index)">
                                     <img class="img-fluid" :src="image.url" :alt="`Thumbnail of ${image.title} picture`">
                                 </div>
     
