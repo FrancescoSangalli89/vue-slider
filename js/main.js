@@ -21,23 +21,19 @@ const app = new Vue(
     {
         el: '#app',
         data: {
-
             clock: null,
             activeImage: 0,
-
             images: [
                 {
                     url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
                     title: 'Svezia',
                     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
                 },
-            
                 {
                     url: 'https://static1.evcdn.net/images/reduction/1513757_w-1920_h-1080_q-70_m-crop.jpg',
                     title: 'Perù',
                     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
                 },
-            
                 {
                     url: 'https://img.itinari.com/pages/images/original/0d3ed180-d22d-48e8-84df-19c4d888b41f-62-crop.jpg?ch=DPR&dpr=2.625&w=1600&s=7ebd4b5a9e045f41b4e0c7c75d298d6c',
                     title: 'Chile',
@@ -62,7 +58,6 @@ const app = new Vue(
                 } else {
                     this.activeImage++;
                 }
-                
             },
             prev() {
                 if (this.activeImage == 0) {
@@ -70,27 +65,25 @@ const app = new Vue(
                 } else {
                     this.activeImage--;
                 }
-
             },
             select(position) {
                 this.activeImage = position;
             },
             stopAutoScroll() {
-
                 clearInterval(this.clock);
-                
+                this.clock = null;
             },
             autoScroll() {
-                this.clock = setInterval(() => {
-
-                    this.next();
-    
-                }, 3000);
+                if (this.clock == null) {
+                    this.clock = setInterval(() => {
+                        this.next();
+                    }, 3000);
+                }
             }
-            
         },
         mounted() {
             this.autoScroll();
+            this.$refs.carousel.focus();
         }
     }
 );

@@ -109,4 +109,6 @@ div#my-carousel .my-thumbnails .my-thumbnail.active{
     border: 3px rgb(197, 197, 197) solid;
 }
 
-
+#my-carousel:focus-visible {
+    outline: none;
+}
